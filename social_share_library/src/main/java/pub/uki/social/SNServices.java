@@ -15,16 +15,16 @@ import pub.uki.social.util.Extras;
 import pub.uki.social.util.HttpHelper;
 import pub.uki.social.util.ShareMessage;
 import pub.uki.social.util.ShareMessageBundle;
-import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
+//import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
+//import org.apache.http.NameValuePair;
+//import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
+//import org.apache.http.message.BasicNameValuePair;
+//import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
+//import org.apache.http.params.HttpProtocolParams;
+//import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -118,30 +118,30 @@ public final class SNServices {
 
     private void postTweet(String token, String tokenSecret) throws Exception {
 
-        HttpPost post = new HttpPost("https://api.twitter.com/1.1/statuses/update.json");
-        LinkedList<BasicNameValuePair> out = new LinkedList<BasicNameValuePair>();
-        out.add(new BasicNameValuePair("status", mMsg));
-        post.setEntity(new UrlEncodedFormEntity(out, HTTP.UTF_8));
-        // Tweak further as needed for your app
-        HttpParams params = new BasicHttpParams();
-        // set this to false, or else you'll get an Expectation Failed: error
-        HttpProtocolParams.setUseExpectContinue(params, false);
-        post.setParams(params);
-        // sign the request to authenticate
-        SharedPreferences prefs = mActivity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String consumerKey = prefs.getString(TWITTER_CONSUMER_KEY, "");
-        String consumerSecret = prefs.getString(TWITTER_CONSUMER_SECRET, "");
-        CommonsHttpOAuthConsumer consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
-        consumer.setTokenWithSecret(token, tokenSecret);
-        consumer.sign(post);
-        new HttpHelper().doPost(post, mActivity);
-
-        mActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(mActivity, "Twitter: " + mMsg, Toast.LENGTH_LONG).show();
-            }
-        });
+//        HttpPost post = new HttpPost("https://api.twitter.com/1.1/statuses/update.json");
+//        LinkedList<BasicNameValuePair> out = new LinkedList<BasicNameValuePair>();
+//        out.add(new BasicNameValuePair("status", mMsg));
+//        post.setEntity(new UrlEncodedFormEntity(out, HTTP.UTF_8));
+//        // Tweak further as needed for your app
+//        HttpParams params = new BasicHttpParams();
+//        // set this to false, or else you'll get an Expectation Failed: error
+//        HttpProtocolParams.setUseExpectContinue(params, false);
+//        post.setParams(params);
+//        // sign the request to authenticate
+//        SharedPreferences prefs = mActivity.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+//        String consumerKey = prefs.getString(TWITTER_CONSUMER_KEY, "");
+//        String consumerSecret = prefs.getString(TWITTER_CONSUMER_SECRET, "");
+//        CommonsHttpOAuthConsumer consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
+//        consumer.setTokenWithSecret(token, tokenSecret);
+//        consumer.sign(post);
+//        new HttpHelper().doPost(post, mActivity);
+//
+//        mActivity.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Toast.makeText(mActivity, "Twitter: " + mMsg, Toast.LENGTH_LONG).show();
+//            }
+//        });
     }
 
     protected class TwitterOAuthHandler {
@@ -221,42 +221,42 @@ public final class SNServices {
     private void updateFacebookStatus(String accessToken) throws Exception {
         HttpPost httpost = new HttpPost("https://graph.facebook.com/me/feed");
 
-        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        nvps.add(new BasicNameValuePair("access_token", accessToken));
-        nvps.add(new BasicNameValuePair("message", mMsg));
-        if (mLink != null) {
-            nvps.add(new BasicNameValuePair("link", mLink));
-        }
-        if (mCaption != null) {
-            nvps.add(new BasicNameValuePair("caption", mCaption));
-        }
-        if (mImgUrl != null) {
-            nvps.add(new BasicNameValuePair("picture", mImgUrl));
-        }
-        if (mLinkName != null) {
-            nvps.add(new BasicNameValuePair("name", mLinkName));
-        }
-        if (mLinkDescription != null) {
-            nvps.add(new BasicNameValuePair("description", mLinkDescription));
-        }
-        httpost.setEntity(new UrlEncodedFormEntity(nvps));
-
-        String response = new HttpHelper().doPost(httpost, mActivity);
-        Log.d("FacebookUpdateResult", response);
-        if (isFacebookResponseSuccessful(response)) {
-            mActivity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(mActivity, "Facebook: " + mMsg, Toast.LENGTH_LONG).show();
-                }
-            });
-        } else {
-            FacebookError facebookError = parseFacebookError(response);
-            if (facebookError.getErrorType().equals("OAuthException")) {
-                Toast.makeText(mActivity, "Your access token seems to be corrupted, relogin please.", Toast.LENGTH_SHORT).show();
-                throw new Exception();
-            }
-        }
+//        List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+//        nvps.add(new BasicNameValuePair("access_token", accessToken));
+//        nvps.add(new BasicNameValuePair("message", mMsg));
+//        if (mLink != null) {
+//            nvps.add(new BasicNameValuePair("link", mLink));
+//        }
+//        if (mCaption != null) {
+//            nvps.add(new BasicNameValuePair("caption", mCaption));
+//        }
+//        if (mImgUrl != null) {
+//            nvps.add(new BasicNameValuePair("picture", mImgUrl));
+//        }
+//        if (mLinkName != null) {
+//            nvps.add(new BasicNameValuePair("name", mLinkName));
+//        }
+//        if (mLinkDescription != null) {
+//            nvps.add(new BasicNameValuePair("description", mLinkDescription));
+//        }
+//        httpost.setEntity(new UrlEncodedFormEntity(nvps));
+//
+//        String response = new HttpHelper().doPost(httpost, mActivity);
+//        Log.d("FacebookUpdateResult", response);
+//        if (isFacebookResponseSuccessful(response)) {
+//            mActivity.runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    Toast.makeText(mActivity, "Facebook: " + mMsg, Toast.LENGTH_LONG).show();
+//                }
+//            });
+//        } else {
+//            FacebookError facebookError = parseFacebookError(response);
+//            if (facebookError.getErrorType().equals("OAuthException")) {
+//                Toast.makeText(mActivity, "Your access token seems to be corrupted, relogin please.", Toast.LENGTH_SHORT).show();
+//                throw new Exception();
+//            }
+//        }
 
     }
 

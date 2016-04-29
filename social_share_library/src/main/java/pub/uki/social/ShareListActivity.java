@@ -136,7 +136,7 @@ public class ShareListActivity extends Activity {
                     item.intent.setType(message.getMimeType());
                 } else {
                     item.intent.putExtra(Intent.EXTRA_TEXT, savedIntent.getStringExtra(Intent.EXTRA_TEXT));
-                    item.intent.putExtra(Intent.EXTRA_STREAM, savedIntent.getParcelableExtra(Intent.EXTRA_STREAM));
+                    //item.intent.putExtra(Intent.EXTRA_STREAM, savedIntent.getParcelableExtra(Intent.EXTRA_STREAM));
                 }
             }
 
