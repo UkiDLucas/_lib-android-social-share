@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        minSdkVersion 4
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile files('libs/signpost-commonshttp4-1.2.1.2.jar')
+    compile files('libs/ormlite-android-4.43.jar')
+    compile files('libs/signpost-core-1.2.1.2.jar')
+    compile files('libs/ormlite-core-4.43.jar')
+}
+
+buildscript {
+    dependencies {
+        classpath '2.1.0'
+    }
+}
