@@ -1,1 +1,1 @@
-include ':social_share_library'
+include ':social_share_library', ':androidtestapp', ':app'
